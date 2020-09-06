@@ -1,3 +1,3 @@
 # Rock Paper Scissors
 
-A coomand line program that utilizes JavaScript and DevTools command line terminal.
+A web application that simulates Rock Paper Scissors in a browser format in which utilizes JavaScript for extensive interactivity.
