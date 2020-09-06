@@ -6,97 +6,28 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
     </head>
     <body>
         
-        <script>
-            function playerPlay() {
-                // Player picks moves
-                // Start with a data structure that contains possible moves for comparison
-                // The player is need to choose rock, paper, scissors to proceed
-                const moves = ['rock', 'paper', 'scissors'];
-                while (true) {
-                    // Input will be lowercased regardless of string content
-                    let playerMove = prompt('Rock, paper, scissors').toLowerCase();
+        <section id='game'>
+            <div class='display-container'>
+                <h1>Rock Paper Scissors!</h1>
+                <p class='player-score'></p>
+                <p class='computer-score'></p>
+            </div>
+            <div class='btn-container'>
+                <button class='game-btn' value='rock'>Rock!</button>
+                <button class='game-btn' value='paper'>Paper!</button>
+                <button class='game-btn' value='scissors'>Scissors!</button>
+            </div>
+            <div class='result-container'>
+                <p class='result'></p>
+            </div>
+        </section>
 
-                    for (let i = 0; i < moves.length; i++) {
-                        if (moves[i] === playerMove) return playerMove;
-                    }
-
-                    console.log('Please pick a move!');
-                }
-            }
-
-            function computerPlay() {
-                // Computer pick random move
-                // Start with a data structure that contains possible moves
-                // Randomize the computer's move through data structure - indexing
-                // Returns computer's move
-                const moves = ['rock', 'paper', 'scissors'];
-                const index = Math.round(Math.random() * (moves.length - 1));
-                
-                return moves[index];
-            }
-
-            function playRound(playerMove, computerMove) {
-                // your code here!
-                // playerMove is already lowercased by playerPlay function
-                // Lowercase player's move for comparison with computer's move
-                // Implement rules and win conditions
-                // Return win statement
-                if (playerMove === computerMove) {
-                    console.log(`Draw! This round's move is ${playerMove}.`);
-                    return 0;
-                } else if ((playerMove === 'rock' && computerMove === 'scissors') ||
-                         (playerMove === 'paper' && computerMove === 'rock') ||
-                         (playerMove === 'scissors' && computerMove === 'paper')) {
-                    console.log(`You win this round! ${playerMove} beats ${computerMove}!`);
-                    return 1;
-                } else {
-                    console.log(`You lose this round. ${computerMove} beats ${playerMove}...`);
-                    return -1;
-                }
-            }
-
-            function displayEndGameState(playerScore, computerScore) {
-                // Display final scores
-                // Display result based on the scores
-                console.log(`Final Scores: Player - ${playerScore} | Computer - ${computerScore}`)
-
-                if (playerScore > computerScore) console.log('You won!');
-                else if (playerScore < computerScore) console.log('You lost...')
-                else console.log('Neither player or computer won!'); 
-            }
-
-            function game() {
-                // Declare player and computer moves, winner of round, current scores, rounds
-                // Wait for valid input from user in order to start the round properly
-                // call playRound() to emulate the round
-                // Score one for the respective winner of that round
-                // Continue until five rounds are up
-                let playerScore = 0;
-                let computerScore = 0;
-                let state = 0;
-                let maxRounds = 5;
-
-                for (let round = 0; round < maxRounds; round++) {
-                    console.log(`Round: ${round + 1}`);
-                    console.log(`Player Score: ${playerScore}`);
-                    console.log(`Computer Score: ${computerScore}`);
-
-                    state = playRound(playerPlay(), computerPlay());
-
-                    if (state > 0) playerScore += 1;
-                    else if (state < 0) computerScore += 1;
-                }
-
-                // Function that will display the end game message based on scores
-                displayEndGameState(playerScore, computerScore);
-            }
-
-            // Game starts with this function call to game()
-            game();
-        </script>
+        <script src='js/script.js'></script>
     </body>
 </html>
